@@ -1,11 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Button, StyleSheet, Text, View } from 'react-native';
+import { logar } from './requisicoes';
+
+
+
 
 export default function App() {
+
+
+  async function fazLogin(email: string, senha: string) {
+    const resultado = await logar(email, senha);
+    console.log(resultado);
+  }
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <Button title="Login?" onPress={()=> fazLogin('teste@teste.com', 'teste123') }/>
+      <Text >Open up App.tsx to FFF  ff your app!</Text>
     </View>
   );
 }
@@ -17,4 +28,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  texto:{
+    marginLeft:80,
+    flex: 1
+  }
 });
+
